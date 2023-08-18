@@ -5,6 +5,8 @@ import withAdminLayout from '../../layout/withAdminLayout';
 
 const DataTable = lazy(() => import('../../container/table/DataTable'));
 const CustomerTable = lazy(() => import('../../container/table/CustomerTable'));
+const RequestTable = lazy(() => import('../../container/table/RequestTable'));
+const ApprovalTable = lazy(() => import('../../container/table/ApprovalTable'));
 
 const Admin = React.memo(() => {
   const { pathname } = useLocation();
@@ -22,6 +24,8 @@ const Admin = React.memo(() => {
       <Routes>
         <Route path="tables/feature-dashboard" element={<DataTable />} />
         <Route path="tables/customer-dashboard" element={<CustomerTable />} />
+        <Route path="tables/request-feature" element={<RequestTable />} />
+        <Route path="tables/approvals" element={<ApprovalTable />} />
       </Routes>
     </Suspense>
   );

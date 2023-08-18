@@ -1,5 +1,5 @@
 import React from 'react';
-import { UilTable } from '@iconscout/react-unicons';
+import { MdHome, Md1KPlus, MdVerifiedUser, MdApproval } from 'react-icons/md';
 import { Menu } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -54,7 +54,7 @@ function MenuItems({ toggleCollapsed }) {
       'feature',
       !topMenu && (
         <NavLink className="menuItem-iocn" to={`${path}/tables/feature-dashboard`}>
-          <UilTable />
+          <MdHome />
         </NavLink>
       ),
     ),
@@ -65,7 +65,29 @@ function MenuItems({ toggleCollapsed }) {
       'customer',
       !topMenu && (
         <NavLink className="menuItem-iocn" to={`${path}/tables/customer-dashboard`}>
-          <UilTable />
+          <MdVerifiedUser />
+        </NavLink>
+      ),
+    ),
+    getItem(
+      <NavLink onClick={toggleCollapsed} to={`${path}/tables/request-feature`}>
+        {t('Request')} {t('feature')}
+      </NavLink>,
+      'request',
+      !topMenu && (
+        <NavLink className="menuItem-iocn" to={`${path}/tables/request-feature`}>
+          <Md1KPlus />
+        </NavLink>
+      ),
+    ),
+    getItem(
+      <NavLink onClick={toggleCollapsed} to={`${path}/tables/approvals`}>
+        {t('approvals')}
+      </NavLink>,
+      'approval',
+      !topMenu && (
+        <NavLink className="menuItem-iocn" to={`${path}/tables/approvals`}>
+          <MdApproval />
         </NavLink>
       ),
     ),

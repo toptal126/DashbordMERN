@@ -22,31 +22,20 @@ function CustomerTable() {
   const [customerData, setCustomerData] = useState([]);
   useEffect(() => {
     axios.get(`${configData.lambda.endpoint}/customers`).then(function (response) {
-      const filteredCustomers = response.data.customers.filter((item) => item.allowed === true);
-      const temp = [];
-      filteredCustomers.map((user) => {
-        return response.data.features.map((feature) => {
-          if (user.feature === feature.id) {
-            temp.push({
-              ...user,
-              product: feature.service,
-              featurename: feature.feature,
-              status: feature.status,
-              timeline: feature.timeline,
-            });
-          }
-          return null;
-        });
-      });
-      setCustomerData(temp);
+      setCustomerData(response.data.customers);
     });
   }, []);
   console.log('cisa', customerData);
-  const dataTableColumn = [
+  const customerTableColumn = [
     {
       title: 'Customer',
       dataIndex: 'name',
       key: 'name',
+    },
+    {
+      title: 'PRODUCT',
+      dataIndex: 'note',
+      key: 'note',
     },
     {
       title: 'SUB SERVICE',
@@ -54,14 +43,9 @@ function CustomerTable() {
       key: 'sub_service',
     },
     {
-      title: 'PRODUCT',
-      dataIndex: 'product',
-      key: 'product',
-    },
-    {
       title: 'FEATURE NAME',
-      dataIndex: 'featurename',
-      key: 'featurename',
+      dataIndex: 'note',
+      key: 'note',
     },
     {
       title: 'USE CASE',
@@ -79,12 +63,43 @@ function CustomerTable() {
       key: 'status',
     },
     {
-      title: 'TIMELINE',
-      dataIndex: 'timeline',
-      key: 'timeline',
+      title: 'Accept',
+      dataIndex: 'note',
+      key: 'note',
+    },
+    {
+      title: 'Deny',
+      dataIndex: 'use_case',
+      key: 'use_case',
     },
   ];
-
+  const featureTableColumn = [
+    {
+      title: 'Product',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Feature Name',
+      dataIndex: 'sub_service',
+      key: 'sub_service',
+    },
+    {
+      title: 'Feature Details',
+      dataIndex: 'note',
+      key: 'note',
+    },
+    {
+      title: 'Accept',
+      dataIndex: 'note',
+      key: 'note',
+    },
+    {
+      title: 'Deny',
+      dataIndex: 'use_case',
+      key: 'use_case',
+    },
+  ];
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Table" routes={PageRoutes} />
@@ -92,12 +107,21 @@ function CustomerTable() {
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards title="Data Table">
+              <Cards title="Feature Table">
                 <DataTable
                   filterOption
                   filterOnchange
                   tableData={customerData}
-                  columns={dataTableColumn}
+                  columns={featureTableColumn}
+                  rowSelection={false}
+                />
+              </Cards>
+              <Cards title="Customer Table">
+                <DataTable
+                  filterOption
+                  filterOnchange
+                  tableData={customerData}
+                  columns={customerTableColumn}
                   rowSelection={false}
                 />
               </Cards>
