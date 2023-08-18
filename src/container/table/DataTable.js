@@ -43,8 +43,6 @@ function DataTables() {
     });
   }, []);
 
-  console.log('featureData', featureData);
-
   const dataTableColumn = [
     {
       title: 'PRODUCT',

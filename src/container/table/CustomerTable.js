@@ -41,7 +41,6 @@ function CustomerTable() {
       setCustomerData(temp);
     });
   }, []);
-  console.log('cisa', customerData);
   const dataTableColumn = [
     {
       title: 'Customer',

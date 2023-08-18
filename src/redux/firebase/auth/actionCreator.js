@@ -20,7 +20,6 @@ const fbAuthLogin = (data) => {
       await fb.auth().signInWithEmailAndPassword(data.username, data.password);
       await dispatch(fbLoginSuccess());
     } catch (err) {
-      console.log(err);
       await dispatch(fbLoginErr(err));
     }
   };

@@ -35,17 +35,11 @@ function BasicForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submit new request:', values);
     axios
       .post(`${configData.lambda.addRequest}`, values, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
-      .then(function (response) {
-        console.log(response);
-        alert('Success!, Please check on Feature Dashboard');
-      })
       .catch(function (error) {
-        console.log(error);
         alert('Sorry', +error.message);
       });
   };

@@ -25,7 +25,6 @@ function CustomerTable() {
       setCustomerData(response.data.customers);
     });
   }, []);
-  console.log('cisa', customerData);
   const customerTableColumn = [
     {
       title: 'Customer',
