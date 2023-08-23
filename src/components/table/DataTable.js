@@ -10,10 +10,6 @@ import { Button } from '../buttons/buttons';
 
 function DataTable({ filterOption, filterOnchange, rowSelection, tableData, columns }) {
   const dispatch = useDispatch();
-  const handleIdSearch = (e) => {
-    const id = e.currentTarget.value;
-    dispatch(dataLiveFilter(id, 'id'));
-  };
   const handleStatusSearch = (value) => {
     dispatch(dataLiveFilter(value, 'status'));
   };
@@ -36,10 +32,6 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
           {!filterOnchange ? (
             <div className="ninjadash-datatable-filter__left">
               <div className="ninjadash-datatable-filter__input">
-                <span className="label">Id:</span>
-                <Input className="ninjadash-data-id" placeholder="Search with Id" />
-              </div>
-              <div className="ninjadash-datatable-filter__input">
                 <span className="label">Status:</span>
                 <Select style={{ width: 200 }} className="ninjadash-data-status" defaultValue="active">
                   <Select.Option value="active">Active</Select.Option>
@@ -55,10 +47,6 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
             </div>
           ) : (
             <div className="ninjadash-datatable-filter__left">
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Id:</span>
-                <Input onChange={handleIdSearch} placeholder="Search with Id" />
-              </div>
               <div className="ninjadash-datatable-filter__input">
                 <span className="label">Status:</span>
                 <Select onChange={handleStatusSearch} style={{ width: 200 }} defaultValue="active">
@@ -78,7 +66,7 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
       )}
 
       <div className="ninjadasj-datatable">
-        <TableWrapper className="table-data-view table-responsive">
+        <TableWrapper className="table-data-view">
           {rowSelection ? (
             <Table
               rowSelection={{

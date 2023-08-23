@@ -2,23 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'antd';
 import axios from 'axios';
-import { PageHeader } from '../../components/page-headers/page-headers';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import DataTable from '../../components/table/DataTable';
 import { Main, BorderLessHeading } from '../styled';
 import { configData } from '../../config/index';
 
 function CustomerTable() {
-  const PageRoutes = [
-    {
-      path: 'index',
-      breadcrumbName: 'Dashboard',
-    },
-    {
-      path: 'first',
-      breadcrumbName: 'Table',
-    },
-  ];
   const [customerData, setCustomerData] = useState([]);
   useEffect(() => {
     axios.get(`${configData.lambda.endpoint}/customers`).then(function (response) {
@@ -43,55 +32,71 @@ function CustomerTable() {
   }, []);
   const dataTableColumn = [
     {
-      title: 'Customer',
+      title: 'CUSTOMER',
       dataIndex: 'name',
       key: 'name',
+      align: 'center',
     },
     {
       title: 'SUB SERVICE',
       dataIndex: 'sub_service',
       key: 'sub_service',
+      width: '5%',
+      align: 'center',
     },
     {
       title: 'PRODUCT',
       dataIndex: 'product',
       key: 'product',
+      width: '15%',
+      align: 'center',
     },
     {
       title: 'FEATURE NAME',
       dataIndex: 'featurename',
       key: 'featurename',
+      width: '25%',
+      align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'USE CASE',
       dataIndex: 'use_case',
       key: 'use_case',
+      width: '25%',
+      align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'PRIORITY',
       dataIndex: 'priority',
       key: 'priority',
+      width: '15%',
+      align: 'center',
     },
     {
       title: 'STATUS',
       dataIndex: 'status',
       key: 'status',
+      align: 'center',
+      width: '15%',
     },
     {
       title: 'TIMELINE',
       dataIndex: 'timeline',
       key: 'timeline',
+      width: '15%',
+      align: 'center',
     },
   ];
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Table" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards title="Data Table">
+              <Cards title="Customer Table">
                 <DataTable
                   filterOption
                   filterOnchange

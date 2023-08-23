@@ -11,12 +11,12 @@ function Form() {
         </Heading>
       </div>
       <View
-        backgroundColor="#f1f1f1"
+        backgroundColor="#F8F8F8"
         borderRadius="6px"
-        maxWidth={{ base: '100%', large: '80%' }}
-        padding="1rem"
-        margin="auto"
-        minHeight="100vh"
+        maxWidth={{ base: '100%', large: '90%' }}
+        padding="3rem"
+        margin="10px"
+        minHeight="auto"
       >
         <BasicForm />
       </View>

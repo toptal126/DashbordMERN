@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Flex, Text, TextField, SelectField, TextAreaField } from '@aws-amplify/ui-react';
+import { Button, Flex, Text, TextAreaField } from '@aws-amplify/ui-react';
+import { Select, Input } from 'antd';
 import axios from 'axios';
 import { configData } from '../../config/index';
 
@@ -47,32 +48,44 @@ function BasicForm() {
   return (
     <>
       <Flex as="form" direction="column" width="100%" onSubmit={handleSubmit}>
-        <SelectField name="service" label="Product" onChange={handleInputChange} style={{ width: '100%' }}>
+        <Text>Product</Text>
+        <Select
+          showSearch
+          defaultValue={servicelist[0]}
+          type="text"
+          name="product"
+          style={{ width: '100%', padding: '0px', margin: '0px 0px 10px 0px', border: '1px solid grey' }}
+        >
           {servicelist.map((value) => (
             <option value={value} key={value}>
               {value}
             </option>
           ))}
-        </SelectField>
-        <TextField
+        </Select>
+        <Text>Feature Name</Text>
+        <Input
           value={values.feature}
           onChange={handleInputChange}
           name="feature"
-          label={<Text>Feature Name</Text>}
           type="text"
           isRequired="true"
-          style={{ width: '100%', outline: 'none' }}
+          style={{ width: '100%', padding: '8px', margin: '-3px 0px 10px 0px', border: '1px solid grey' }}
         />
         <TextAreaField
-          label="Feature Detail"
+          label={<Text>Feature Detail</Text>}
           value={values.note}
           onChange={handleInputChange}
           name="note"
-          rows={5}
+          rows={8}
           isRequired="true"
           style={{ display: 'grid', width: '100%', outline: 'none' }}
         />
-        <Button type="submit" variation="primary" width={{ base: '100%', large: '100%' }} style={{ marginTop: '10px' }}>
+        <Button
+          type="submit"
+          variation="primary"
+          width={{ base: '100%', large: '100%' }}
+          style={{ padding: '8px', marginTop: '20px' }}
+        >
           Request New Feature
         </Button>
       </Flex>

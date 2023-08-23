@@ -7,6 +7,7 @@ const DataTableStyleWrap = Styled.div`
         justify-content: space-between;
         width: 100%;
         margin: 20px 0 25px 0;
+       
         @media only screen and (max-width: 767px){
             flex-direction: column;
             align-items: flex-start;
@@ -66,7 +67,12 @@ const DataTableStyleWrap = Styled.div`
                     }
                 }
             }
+           
         }
+    }
+    .custom-cell {
+        max-height: 50px;
+        overflow: auto;
     }
 `;
 export { DataTableStyleWrap };

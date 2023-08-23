@@ -2,23 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'antd';
 import axios from 'axios';
-import { PageHeader } from '../../components/page-headers/page-headers';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import DataTable from '../../components/table/DataTable';
 import { Main, BorderLessHeading } from '../styled';
 import { configData } from '../../config/index';
 
 function DataTables() {
-  const PageRoutes = [
-    {
-      path: 'index',
-      breadcrumbName: 'Dashboard',
-    },
-    {
-      path: 'first',
-      breadcrumbName: 'Table',
-    },
-  ];
   const [featureData, setFeatureData] = useState([]);
   useEffect(() => {
     axios.get(`${configData.lambda.endpoint}/customers`).then(function (response) {
@@ -47,43 +36,55 @@ function DataTables() {
     {
       title: 'PRODUCT',
       dataIndex: 'service',
+      align: 'center',
       key: 'service',
+      width: '10%',
     },
     {
       title: 'FEATURE NAME',
       dataIndex: 'feature',
       key: 'feature',
+      align: 'center',
+      width: '25%',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'FEATURE DETAIL',
       dataIndex: 'note',
       key: 'note',
+      width: '25%',
+      align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'STATUS',
       dataIndex: 'status',
       key: 'status',
+      width: '15%',
+      align: 'center',
     },
     {
       title: 'TIMELINE',
       dataIndex: 'timeline',
       key: 'timeline',
+      align: 'center',
     },
     {
       title: 'CUSTOMER COUNT',
       dataIndex: 'customer_count',
       key: 'customer_count',
+      width: '3%',
+      align: 'center',
     },
   ];
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Table" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards title="Data Table">
+              <Cards title="Feature Table">
                 <DataTable
                   filterOption
                   filterOnchange

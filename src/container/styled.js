@@ -2601,6 +2601,21 @@ const TableWrapper = Styled.div`
                     }
                 }
             }
+             thead{
+                th{
+                    padding: 15px 15px;
+                    background-color: #3cb371;
+                    color: white;
+                }
+            }
+            tbody{
+                td:nth-child(odd){ 
+                    background: green;
+                }
+                td:nth-child(even){
+                    background: blue;
+                }
+            }
         }
         .ant-pagination{
             margin-top: 25px !important;
@@ -2613,69 +2628,23 @@ const TableWrapper = Styled.div`
         table{
             thead{
                 th{
-                    padding: 16px 25px;
+                    padding: 15px 15px;
+                    background-color: #EFEFEF;
+                    border: 1px solid lightgray;
+                    color: black;
                 }
             }
-            tbody{
-                td{
-                    padding: 16px 25px;
-                    .record-img{
-                        img{
-                            max-width: 38px;
-                            width: 38px;
-                            height: 38px;
-                            border-radius: 50%;
-                            ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 12px;
-                        }
-                    }
-                    .record-location{
-                        display: block;
-                        font-size: 12px;
-                        font-weight: 400;
-                        color: ${({ theme }) => theme[theme.mainContent]['light-text']};
-                    }
-                    .status{
-                        font-weight: 500;
-                        text-transform: capitalize;
-                        &.active{
-                            color: ${({ theme }) => theme['success-color']};
-                            background: ${({ theme }) => theme['success-color']}10;
-                        }
-                        &.deactivated{
-                            color: ${({ theme }) => theme['warning-color']};
-                            background: ${({ theme }) => theme['warning-color']}10;
-                        }
-                        &.blocked{
-                            color: ${({ theme }) => theme['danger-color']};
-                            background: ${({ theme }) => theme['danger-color']}10;
-                        }
-                    }
-                    .table-actions{
-                        a{
-                            svg, i{
-                                width: 16px;
-                                color: ${({ theme }) => theme[theme.mainContent]['extra-light-text']};
-                            }
-                            &.edit{
-                              &:hover{
-                                svg,
-                                i{
-                                    color: ${({ theme }) => theme['info-color']};
-                                }
-                              }  
-                            }
-                            &.delete{
-                              &:hover{
-                                svg,
-                                i{
-                                    color: ${({ theme }) => theme['danger-color']};
-                                }
-                              }  
-                            }
-                        }
-                    }
-                }
+            tbody tr:nth-child(odd) {
+                background-color: #FFFFFF;
             }
+            tbody tr:nth-child(even) {
+                background-color: #EFEFEF;
+            }
+            tbody > tr > td {
+                background-color: transparent;
+                border: 1px solid lightgray;
+            }
+            
         }
     }
     &.table-responsive{
