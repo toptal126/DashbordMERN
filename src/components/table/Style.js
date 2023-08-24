@@ -71,8 +71,9 @@ const DataTableStyleWrap = Styled.div`
         }
     }
     .custom-cell {
-        max-height: 50px;
-        overflow: auto;
+        height: 25px;
+        min-height: 25px;
+        overflow: hidden;
     }
 `;
 export { DataTableStyleWrap };

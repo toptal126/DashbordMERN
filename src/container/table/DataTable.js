@@ -39,6 +39,7 @@ function DataTables() {
       align: 'center',
       key: 'service',
       width: '10%',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'FEATURE NAME',
@@ -62,12 +63,14 @@ function DataTables() {
       key: 'status',
       width: '15%',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'TIMELINE',
       dataIndex: 'timeline',
       key: 'timeline',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'CUSTOMER COUNT',
@@ -75,6 +78,7 @@ function DataTables() {
       key: 'customer_count',
       width: '3%',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
   ];
 

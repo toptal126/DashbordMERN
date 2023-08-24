@@ -36,6 +36,7 @@ function CustomerTable() {
       dataIndex: 'name',
       key: 'name',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'SUB SERVICE',
@@ -43,6 +44,7 @@ function CustomerTable() {
       key: 'sub_service',
       width: '5%',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'PRODUCT',
@@ -50,6 +52,7 @@ function CustomerTable() {
       key: 'product',
       width: '15%',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'FEATURE NAME',
@@ -65,7 +68,11 @@ function CustomerTable() {
       key: 'use_case',
       width: '25%',
       align: 'center',
-      render: (e) => <div className="custom-cell">{e}</div>,
+      render: (e) => (
+        <div className="custom-cell">
+          <p>{e}</p>
+        </div>
+      ),
     },
     {
       title: 'PRIORITY',
@@ -73,6 +80,7 @@ function CustomerTable() {
       key: 'priority',
       width: '15%',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'STATUS',
@@ -80,6 +88,7 @@ function CustomerTable() {
       key: 'status',
       align: 'center',
       width: '15%',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'TIMELINE',
@@ -87,6 +96,7 @@ function CustomerTable() {
       key: 'timeline',
       width: '15%',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
   ];
 

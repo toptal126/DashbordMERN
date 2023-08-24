@@ -60,18 +60,21 @@ function ApprovalTable() {
       dataIndex: 'name',
       key: 'name',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'PRODUCT',
       dataIndex: 'product',
       key: 'product',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'SUB SERVICE',
       dataIndex: 'sub_service',
       key: 'sub_service',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'FEATURE NAME',
@@ -92,6 +95,7 @@ function ApprovalTable() {
       dataIndex: 'priority',
       key: 'priority',
       align: 'center',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'SERVICE NOTE',
@@ -126,14 +130,15 @@ function ApprovalTable() {
       dataIndex: 'service',
       key: 'service',
       align: 'center',
-      width: '10%',
+      width: '15%',
+      render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
       title: 'FEATURE NAME',
       dataIndex: 'feature',
       key: 'feature',
       align: 'center',
-      width: '25%',
+      width: '30%',
       render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
@@ -141,7 +146,7 @@ function ApprovalTable() {
       dataIndex: 'note',
       key: 'note',
       align: 'center',
-      width: '25%',
+      width: '30%',
       render: (e) => <div className="custom-cell">{e}</div>,
     },
     {
@@ -149,7 +154,7 @@ function ApprovalTable() {
       dataIndex: 'none',
       key: 'none',
       align: 'center',
-      width: '10%',
+      width: '15%',
       render: (e) => (
         <Button style={{ color: 'blue', border: '1px solid blue', backgroundColor: 'transparent' }}>Accept {e}</Button>
       ),
@@ -159,7 +164,7 @@ function ApprovalTable() {
       dataIndex: 'none',
       key: 'none',
       align: 'center',
-      width: '6%',
+      width: '10%',
       render: (e) => (
         <Button style={{ color: 'red', border: '1px solid red', backgroundColor: 'transparent' }}>Deny {e}</Button>
       ),

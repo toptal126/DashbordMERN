@@ -2629,8 +2629,8 @@ const TableWrapper = Styled.div`
             thead{
                 th{
                     padding: 15px 15px;
-                    background-color: #EFEFEF;
-                    border: 1px solid lightgray;
+                    background-color: #FAFAFA;
+                    border: 1px solid black;
                     color: black;
                 }
             }
@@ -2638,11 +2638,12 @@ const TableWrapper = Styled.div`
                 background-color: #FFFFFF;
             }
             tbody tr:nth-child(even) {
-                background-color: #EFEFEF;
+                background-color: #FAFAFA;
             }
             tbody > tr > td {
                 background-color: transparent;
-                border: 1px solid lightgray;
+                border: 1px solid black;
+                color: black;
             }
             
         }

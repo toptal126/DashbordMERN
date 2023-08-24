@@ -1,15 +1,58 @@
 import UilSearch from '@iconscout/react-unicons/icons/uil-search';
 import { Input, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import $ from 'jquery';
+import 'jquery-ui-bundle';
+import 'jquery-ui-bundle/jquery-ui.min.css';
 import { DataTableStyleWrap } from './Style';
 import { TableWrapper } from '../../container/styled';
 import { dataLiveFilter, filterWithSubmit } from '../../redux/data-filter/actionCreator';
 import { Button } from '../buttons/buttons';
 
 function DataTable({ filterOption, filterOnchange, rowSelection, tableData, columns }) {
+  const getCurrentDimension = () => {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  };
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+  const onResize = (event, ui) => {
+    const h = ui.size.height - 50;
+    ui.element.find('.custom-cell').css('height', `${h}px`);
+  };
+  useEffect(() => {
+    const init = () => {
+      $('.ant-table-row').resizable({
+        minWidth: 50,
+        maxWidth: screenSize.width - 80,
+        maxHeight: screenSize.height * 0.35,
+        handles: 'e, s',
+        resize: onResize,
+      });
+    };
+
+    const updateDimension = () => {
+      setScreenSize(getCurrentDimension());
+      init();
+    };
+    if (document.readyState === 'complete') {
+      init();
+    } else {
+      window.addEventListener('resize', updateDimension);
+      window.addEventListener('load', init);
+
+      return () => {
+        window.removeEventListener('resize', 550);
+        window.addEventListener('load', init);
+      };
+    }
+  }, [screenSize, tableData]);
+
   const dispatch = useDispatch();
+
   const handleStatusSearch = (value) => {
     dispatch(dataLiveFilter(value, 'status'));
   };
